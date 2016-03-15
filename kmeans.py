@@ -6,7 +6,10 @@ fig = plt.figure(figsize=(5,10))
 ax = fig.add_subplot(2,1,1)
 
 # Generate "random" data, should be approximately two clusters
-data = np.concatenate([-np.random.rand(100,2), 2 * np.random.rand(100, 2)])
+group1 = -np.random.rand(100,2)
+group2 = 2 * np.random.rand(100, 2)
+group3 = np.concatenate((-2.5 * np.random.rand(100, 1), 1.25 * np.random.rand(100, 1)), axis=1)
+data = np.concatenate([group1, group2, group3])
 print data
 x = data[:,0]
 y = data[:,1]
@@ -18,7 +21,7 @@ ax = fig.add_subplot(2,1,2)
 
 ## K Means clustering
 
-k = 2
+k = 3
 kmeans = cluster.KMeans(n_clusters=k)
 kmeans.fit(data)
 labels = kmeans.labels_
